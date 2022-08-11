@@ -1,0 +1,23 @@
+{% extends "NurseryApp/base.html" %}
+{% block title %} Login {% endblock %}
+{% block content %}
+    <style>
+        div {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    <h3 style="text-align: center;"> Редактирование данных питомца </h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ pet_form.as_div }}
+        <div><button type="submit">Сохранить</button></div>
+    </form>
+        <div><a href="delete/{{ pk }}"> Удалить </a></div>
+{% endblock %}

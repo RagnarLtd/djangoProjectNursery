@@ -1,0 +1,50 @@
+{% extends "NurseryApp/base.html" %}
+{% block title %} Login {% endblock %}
+{% block content %}
+    <style>
+        div:hover {
+        outline: 2px solid #000; /* Чёрная рамка */
+        }
+    </style>
+                {% if user.is_authenticated %}
+                <h4> <a href="/pet/add"> Добавить питомца</a></h4>
+                {% endif %}
+                {% for pet in pets %}
+                    <div style="
+                    width: 400px;
+                    height: 400px;
+                    background: #fc0;
+                    border: 3px solid #fff;
+                    border-radius: 10px;
+                    display: inline-block;
+                    ">
+                        {% if user.is_authenticated %}
+                            <h3>Имя питомца:
+                            <a href="/pet/{{ pet.id }}">{{ pet.nickname }} </a>
+                            </h3>
+                        {% else %}
+                            <h3>
+                                Имя питомца: {{ pet.nickname }}
+                            </h3>
+                        {% endif %}
+                        <p>
+                            Возраст: {{ pet.age }}
+                        </p>
+                        <p>
+                            Вес: {{ pet.weight }}
+                        </p>
+                        <p>
+                            Рост: {{ pet.growth }}
+                        </p>
+                        <p>
+                            Дата прибытия: {{ pet.date_in }}
+                        </p>
+                        <p>
+                            Особые приметы: {{ pet.special_signs }}
+                        </p>
+                        <p>
+                            Приют: {{ pet.shelter.userprofile.shelter }}
+                        </p>
+                    </div>
+                {% endfor %}
+{% endblock %}
