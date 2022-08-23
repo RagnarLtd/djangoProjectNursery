@@ -145,7 +145,8 @@ class EditPetView(View):
     def get(self, request, pk):
         pet = Pet.objects.get(pk=pk)
         pet_form = CreatePetForm(instance=pet)
-        return render(request, 'NurseryApp/edit_pet.html', context={'pet_form': pet_form, 'pk': pk})
+        return render(request, 'NurseryApp/edit_pet.html', context={'pet_form': pet_form,
+                                                                    'pk': pk})
 
     def post(self, request, pk):
         pet = Pet.objects.get(pk=pk)
