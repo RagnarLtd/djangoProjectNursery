@@ -8,7 +8,7 @@ from NurseryApp.models import Pet, UserProfile
 class RegisterPageTest(TestCase):
 
     def test_register_page(self):
-        """Тест что используется нужный шаблон, статут ответа 200"""
+        """Тест что используется нужный шаблон, код ответа 200"""
         url = reverse('register')
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
